@@ -43,37 +43,37 @@ macro_rules! input {
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 macro_rules! input_inner {
     ($next:expr) => {};
     ($next:expr, ) => {};
 
     ($next:expr, $var:ident : $t:tt $($r:tt)*) => {
         let $var = $crate::read_value!($next, $t);
-        $crate::input_inner!{$next $($r)*}
+        input_inner!{$next $($r)*}
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 macro_rules! read_value {
     ($next:expr, ( $($t:tt),* )) => {
-        ( $($crate::read_value!($next, $t)),* )
+        ( $(read_value!($next, $t)),* )
     };
 
     ($next:expr, [ $t:tt ; $len:expr ]) => {
-        (0..$len).map(|_| $crate::read_value!($next, $t)).collect::<Vec<_>>()
+        (0..$len).map(|_| read_value!($next, $t)).collect::<Vec<_>>()
     };
 
     ($next:expr, chars) => {
-        $crate::read_value!($next, String).chars().collect::<Vec<char>>()
+        read_value!($next, String).chars().collect::<Vec<char>>()
     };
 
     ($next:expr, bytes) => {
-        $crate::read_value!($next, String).into_bytes()
+        read_value!($next, String).into_bytes()
     };
 
     ($next:expr, usize1) => {
-        $crate::read_value!($next, usize) - 1
+        read_value!($next, usize) - 1
     };
 
     ($next:expr, $t:ty) => {
