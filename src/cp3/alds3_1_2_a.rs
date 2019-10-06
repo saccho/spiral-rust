@@ -11,20 +11,22 @@ pub fn run(n: usize, a: Vec<i32>) -> (Vec<i32>, i32) {
 fn bubble_sort(n: usize, mut a: Vec<i32>) -> (Vec<i32>, i32) {
     let mut flag = true;
     let mut count = 0;
+    let mut i = 0;
     
     while flag {
         flag = false;
-        for i in (1..n).rev() {
-            if a[i-1] > a[i] {
-                let mut x = a[i-1].clone();
-                let mut y = a[i].clone();
+        for j in (i+1..n).rev() {
+            if a[j-1] > a[j] {
+                let mut x = a[j-1].clone();
+                let mut y = a[j].clone();
                 mem::swap(&mut x, &mut y);
-                a[i-1] = x;
-                a[i] = y;
+                a[j-1] = x;
+                a[j] = y;
                 flag = true;
                 count += 1;
             }
         }
+        i += 1;
     }
     (a, count)
 }
