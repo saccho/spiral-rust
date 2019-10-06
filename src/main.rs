@@ -2,6 +2,7 @@ use std::env;
 use spiral_rust::input;
 use spiral_rust::cp2::alds2_1_1_d;
 use spiral_rust::cp3::alds3_1_1_a;
+use spiral_rust::cp3::alds3_1_2_a;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -27,6 +28,15 @@ fn main() {
             for i in 0..n {
                 println!("{:?}", results[i]);
             }
+        }
+        "cp3_1_2_a" => {
+            input!{
+                n: usize,
+                a: [i32; n]
+            }
+            let (result, count) = alds3_1_2_a::run(n, a);
+            println!("{:?}", result);
+            println!("{}", count);
         }
         _ => println!("Unimplemented.")
     }
