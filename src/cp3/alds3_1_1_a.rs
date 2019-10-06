@@ -2,7 +2,7 @@ pub fn run(n: usize, a: Vec<i32>) -> Vec<Vec<i32>> {
     if n == a.len() {
         insert_sort(n, a)
     } else {
-        panic!("mismatched length (must be `r.len() == n`)")
+        panic!("mismatched length (must be `a.len() == n`)")
     }
 }
 
