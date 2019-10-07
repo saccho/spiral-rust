@@ -1,5 +1,6 @@
 use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
+use spiral_rust::cp3::alds3_1_2_b;
 
 #[test]
 fn cp3_1_1_a_1() {
@@ -26,6 +27,17 @@ fn cp3_1_2_a_1() {
     const ANS_V: [i32; N] = [1, 2, 3, 4, 5];
     const ANS_C: i32 = 8;
     let (result, count) = alds3_1_2_a::run(N, A.to_vec());
+    assert_eq!(ANS_V.to_vec(), result);
+    assert_eq!(ANS_C, count);
+}
+
+#[test]
+fn cp3_1_2_b_1() {
+    const N: usize = 6;
+    const A: [i32; N] = [5, 6, 4, 2, 1, 3];
+    const ANS_V: [i32; N] = [1, 2, 3, 4, 5, 6];
+    const ANS_C: i32 = 4;
+    let (result, count) = alds3_1_2_b::run(N, A.to_vec());
     assert_eq!(ANS_V.to_vec(), result);
     assert_eq!(ANS_C, count);
 }

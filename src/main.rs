@@ -3,6 +3,7 @@ use spiral_rust::input;
 use spiral_rust::cp2::alds2_1_1_d;
 use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
+use spiral_rust::cp3::alds3_1_2_b;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -35,6 +36,15 @@ fn main() {
                 a: [i32; n]
             }
             let (result, count) = alds3_1_2_a::run(n, a);
+            println!("{:?}", result);
+            println!("{}", count);
+        }
+        "cp3_1_2_b" => {
+            input!{
+                n: usize,
+                a: [i32; n]
+            }
+            let (result, count) = alds3_1_2_b::run(n, a);
             println!("{:?}", result);
             println!("{}", count);
         }
