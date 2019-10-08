@@ -9,21 +9,29 @@ pub struct SortedResults {
 }
 
 pub fn run(n: usize, c: Vec<String>) -> SortedResults {
+    let bubble_values = bubble_sort(n, &c);
+    let bubble_is_stable = "Stable".to_string();
+    let selection_values = selection_sort(n, &c);
+    let selection_is_stable = is_stable(&bubble_values, &selection_values);
+
+    let bubble = SortedResult {
+        values: bubble_values,
+        is_stable: bubble_is_stable
+    };
+    let selection = SortedResult {
+        values: selection_values,
+        is_stable: selection_is_stable
+    };
+
     SortedResults {
-        bubble: bubble_sort(n, &c),
-        selection: selection_sort(n, &c)
+        bubble,
+        selection
     }
 }
 
-fn bubble_sort(n: usize, c: &Vec<String>) -> SortedResult {
+fn bubble_sort(n: usize, c: &Vec<String>) -> Vec<String> {
     let mut a = c.clone();
     let mut a_nums = get_num(n, &a);
-    let svis = get_same_value_indices(n, &a_nums);
-    let mut same_values: Vec<Vec<String>> = Vec::new();
-    for svi in svis {
-        same_values.push(vec![a[svi[0]].clone(), a[svi[1]].clone()]);
-    }
-    let mut is_stable_str = "Not Stable";
     let mut flag = true;
     let mut i = 0;
 
@@ -46,31 +54,12 @@ fn bubble_sort(n: usize, c: &Vec<String>) -> SortedResult {
         i += 1;
     }
 
-    let svis = get_same_value_indices(n, &a_nums);
-    let mut sorted_same_values: Vec<Vec<String>> = Vec::new();
-    for svi in svis {
-        sorted_same_values.push(vec![a[svi[0]].clone(), a[svi[1]].clone()]);
-    }
-
-    if is_stable(&same_values, &sorted_same_values) {
-        is_stable_str = "Stable";
-    }
-
-    SortedResult {
-        values: a.to_vec(),
-        is_stable: is_stable_str.to_string()
-    }
+    a
 }
 
-fn selection_sort(n: usize, c: &Vec<String>) -> SortedResult {
+fn selection_sort(n: usize, c: &Vec<String>) -> Vec<String> {
     let mut a = c.clone();
     let mut a_nums = get_num(n, &a);
-    let svis = get_same_value_indices(n, &a_nums);
-    let mut same_values: Vec<Vec<String>> = Vec::new();
-    for svi in svis {
-        same_values.push(vec![a[svi[0]].clone(), a[svi[1]].clone()]);
-    }
-    let mut is_stable_str = "Not Stable";
 
     for i in 0..n-1 {
         let mut min_i = i;
@@ -91,20 +80,7 @@ fn selection_sort(n: usize, c: &Vec<String>) -> SortedResult {
         }
     }
 
-    let svis = get_same_value_indices(n, &a_nums);
-    let mut sorted_same_values: Vec<Vec<String>> = Vec::new();
-    for svi in svis {
-        sorted_same_values.push(vec![a[svi[0]].clone(), a[svi[1]].clone()]);
-    }
-
-    if is_stable(&same_values, &sorted_same_values) {
-        is_stable_str = "Stable";
-    }
-
-    SortedResult {
-        values: a.to_vec(),
-        is_stable: is_stable_str.to_string()
-    }
+    a
 }
 
 fn get_num(n: usize, a: &Vec<String>) -> Vec<i32> {
@@ -117,30 +93,10 @@ fn get_num(n: usize, a: &Vec<String>) -> Vec<i32> {
     a_nums
 }
 
-fn get_same_value_indices(n: usize, a_num: &Vec<i32>) -> Vec<Vec<usize>> {
-    let mut indices: Vec<Vec<usize>> = Vec::new();
-    for i in 0..n-1 {
-        for j in i+1..n {
-            if a_num[i] == a_num[j] {
-                indices.push(vec![i, j]);
-            }
-        }
+fn is_stable(bubble: &Vec<String>, selection: &Vec<String>) -> String {
+    let mut result = "Not Stable".to_string();
+    if bubble == selection {
+        result = "Stable".to_string();
     }
-    indices
-}
-
-fn is_stable(same_values: &Vec<Vec<String>>, sorted_same_values: &Vec<Vec<String>>) -> bool {
-    let mut b = false;
-    for sv in same_values {
-        b = false;
-        for ssv in sorted_same_values {
-            if sv == ssv {
-                b = true;
-            }
-        }
-        if !b {
-            break;
-        }
-    }
-    b
+    result
 }
