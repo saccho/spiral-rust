@@ -1,6 +1,7 @@
 use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
 use spiral_rust::cp3::alds3_1_2_b;
+use spiral_rust::cp3::alds3_1_2_c;
 
 #[test]
 fn cp3_1_1_a_1() {
@@ -80,4 +81,52 @@ fn cp3_1_2_b_2() {
     let (result, count) = alds3_1_2_b::run(N, A.to_vec());
     assert_eq!(ANS_V.to_vec(), result);
     assert_eq!(ANS_C, count);
+}
+
+#[test]
+fn cp3_1_2_c_1() {
+    const N: usize = 5;
+    let c: [String; N] = [
+        "H4".to_string(), 
+        "C9".to_string(), 
+        "S4".to_string(), 
+        "D2".to_string(), 
+        "C3".to_string()
+    ];
+    let ans_bv: [String; N] = [
+        "D2".to_string(), 
+        "C3".to_string(), 
+        "H4".to_string(), 
+        "S4".to_string(), 
+        "C9".to_string()
+    ];
+    let ans_bs: String = "Stable".to_string();
+    let ans_sv: [String; N] = [
+        "D2".to_string(), 
+        "C3".to_string(), 
+        "S4".to_string(), 
+        "H4".to_string(), 
+        "C9".to_string()
+    ];
+    let ans_ss: String = "Not Stable".to_string();
+    let results = alds3_1_2_c::run(N, c.to_vec());
+    assert_eq!(ans_bv.to_vec(), results.bubble.values);
+    assert_eq!(ans_bs, results.bubble.is_stable);
+    assert_eq!(ans_sv.to_vec(), results.selection.values);
+    assert_eq!(ans_ss, results.selection.is_stable);
+}
+
+#[test]
+fn cp3_1_2_c_2() {
+    const N: usize = 2;
+    let c: [String; N] = ["S1".to_string(), "H1".to_string()];
+    let ans_bv: [String; N] = ["S1".to_string(), "H1".to_string()];
+    let ans_bs: String = "Stable".to_string();
+    let ans_sv: [String; N] = ["S1".to_string(), "H1".to_string()];
+    let ans_ss: String = "Stable".to_string();
+    let results = alds3_1_2_c::run(N, c.to_vec());
+    assert_eq!(ans_bv.to_vec(), results.bubble.values);
+    assert_eq!(ans_bs, results.bubble.is_stable);
+    assert_eq!(ans_sv.to_vec(), results.selection.values);
+    assert_eq!(ans_ss, results.selection.is_stable);
 }
