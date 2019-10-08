@@ -110,8 +110,8 @@ fn selection_sort(n: usize, c: &Vec<String>) -> SortedResult {
 fn get_num(n: usize, a: &Vec<String>) -> Vec<i32> {
     let mut a_nums: Vec<i32> = Vec::new();
     for i in 0..n {
-        let a_str: char = a[i].chars().nth(1).unwrap();
-        let a_num: i32 = a_str as i32 - 48;
+        let a_str: String = a[i].chars().skip(1).collect::<String>();
+        let a_num: i32 = a_str.parse().unwrap();
         a_nums.push(a_num);
     }
     a_nums
