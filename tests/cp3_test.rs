@@ -50,6 +50,17 @@ fn cp3_1_2_a_1() {
 }
 
 #[test]
+fn cp3_1_2_a_2() {
+    const N: usize = 8;
+    const A: [i32; N] = [8, 4, 3, 7, 6, 5, 2, 1];
+    const ANS_V: [i32; N] = [1, 2, 3, 4, 5, 6, 7, 8];
+    const ANS_C: i32 = 22;
+    let (result, count) = alds3_1_2_a::run(N, A.to_vec());
+    assert_eq!(ANS_V.to_vec(), result);
+    assert_eq!(ANS_C, count);
+}
+
+#[test]
 fn cp3_1_2_b_1() {
     const N: usize = 6;
     const A: [i32; N] = [5, 6, 4, 2, 1, 3];
