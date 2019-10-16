@@ -51,8 +51,8 @@ fn insert_sort(n: usize, a: &Vec<i32>, g: usize, cnt: &mut i32) -> Vec<i32> {
                 result[j+g] = v;
                 *cnt -= 1;
                 done = true;
-            } else if j == 0 {
-                result[0] = v;
+            } else if j < g {
+                result[j] = v;
                 done = true;
             } else {
                 j -= g;
