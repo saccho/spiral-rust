@@ -5,6 +5,7 @@ use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
 use spiral_rust::cp3::alds3_1_2_b;
 use spiral_rust::cp3::alds3_1_2_c;
+use spiral_rust::cp3::alds3_1_2_d;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -59,6 +60,26 @@ fn main() {
             println!("{}", results.bubble.is_stable);
             println!("{:?}", results.selection.values);
             println!("{}", results.selection.is_stable);
+        }
+        "cp3_1_2_d" => {
+            input!{
+                n: usize,
+                a: [i32; n]
+            }
+            let result = alds3_1_2_d::run(n, a);
+            println!("{:?}", result.m);
+            for i in 0..result.m {
+                print!("{}", result.intervals[i]);
+                if i == result.m-1 {
+                    print!("\n");
+                } else {
+                    print!(" ");
+                }
+            }
+            println!("{}", result.cnt);
+            for i in 0..n {
+                println!("{}", result.values[i]);
+            }
         }
         _ => println!("Unimplemented.")
     }

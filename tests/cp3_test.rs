@@ -2,6 +2,7 @@ use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
 use spiral_rust::cp3::alds3_1_2_b;
 use spiral_rust::cp3::alds3_1_2_c;
+use spiral_rust::cp3::alds3_1_2_d;
 
 #[test]
 fn cp3_1_1_a_1() {
@@ -129,4 +130,34 @@ fn cp3_1_2_c_2() {
     assert_eq!(ans_bs, results.bubble.is_stable);
     assert_eq!(ans_sv.to_vec(), results.selection.values);
     assert_eq!(ans_ss, results.selection.is_stable);
+}
+
+#[test]
+fn cp3_1_2_d_1() {
+    const N: usize = 5;
+    const A: [i32; N] = [5, 1, 4, 3, 2];
+    const ANS_M: usize = 2;
+    const ANS_INTERVALS: [usize; ANS_M] = [4, 1];
+    const ANS_CNT: i32 = 3;
+    const ANS_V: [i32; N] = [1, 2, 3, 4, 5];
+    let result = alds3_1_2_d::run(N, A.to_vec());
+    assert_eq!(ANS_M, result.m);
+    assert_eq!(ANS_INTERVALS.to_vec(), result.intervals);
+    assert_eq!(ANS_CNT, result.cnt);
+    assert_eq!(ANS_V.to_vec(), result.values);
+}
+
+#[test]
+fn cp3_1_2_d_2() {
+    const N: usize = 3;
+    const A: [i32; N] = [3, 2, 1];
+    const ANS_M: usize = 1;
+    const ANS_INTERVALS: [usize; ANS_M] = [3];
+    const ANS_CNT: i32 = 3;
+    const ANS_V: [i32; N] = [1, 2, 3];
+    let result = alds3_1_2_d::run(N, A.to_vec());
+    assert_eq!(ANS_M, result.m);
+    assert_eq!(ANS_INTERVALS.to_vec(), result.intervals);
+    assert_eq!(ANS_CNT, result.cnt);
+    assert_eq!(ANS_V.to_vec(), result.values);
 }
