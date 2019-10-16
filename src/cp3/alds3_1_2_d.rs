@@ -39,16 +39,17 @@ fn shell_sort(n: usize, a: &Vec<i32>) -> (Vec<i32>, usize, Vec<usize>, i32) {
 fn insert_sort(n: usize, a: &Vec<i32>, g: usize, cnt: &mut i32) -> Vec<i32> {
     let mut result = a.clone();
 
-    for i in g..n {
-        let mut j = i - g;
+    for i in 0..n-g {
+        let mut j = i;
         let mut done = false;
-        let v = result[i];
+        let v = result[i+g];
 
         while !done {
             result[j+g] = result[j];
+            *cnt += 1;
             if result[j] <= v {
                 result[j+g] = v;
-                *cnt += 1;
+                *cnt -= 1;
                 done = true;
             } else if j == 0 {
                 result[0] = v;
