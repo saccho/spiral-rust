@@ -18,13 +18,13 @@ pub fn run(n: usize, a: Vec<i32>) -> SortedResult {
 fn shell_sort(n: usize, a: &Vec<i32>) -> (Vec<i32>, usize, Vec<usize>, i32) {
     let mut result = a.clone();
     let mut cnt = 0;
-    let mut intervals: Vec<usize> = vec![0];
+    let mut intervals: Vec<usize> = vec![1];
     loop {
-        let x: usize = 3 * intervals.last() + 1;
-        if x < a.len() {
+        let x = 3 * intervals.first().unwrap() + 1;
+        if x > a.len() {
             break;
         } else {
-            intervals.push(x);
+            intervals.insert(0, x);
         }
     }
     let m: usize = intervals.len();

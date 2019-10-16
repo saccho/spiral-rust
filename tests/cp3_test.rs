@@ -152,7 +152,7 @@ fn cp3_1_2_d_2() {
     const N: usize = 3;
     const A: [i32; N] = [3, 2, 1];
     const ANS_M: usize = 1;
-    const ANS_INTERVALS: [usize; ANS_M] = [3];
+    const ANS_INTERVALS: [usize; ANS_M] = [1];
     const ANS_CNT: i32 = 3;
     const ANS_V: [i32; N] = [1, 2, 3];
     let result = alds3_1_2_d::run(N, A.to_vec());
