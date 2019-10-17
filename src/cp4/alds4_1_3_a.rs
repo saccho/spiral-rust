@@ -32,9 +32,9 @@ impl Stack {
 pub fn run(s: String) -> i32 {
     let sl: Vec<&str> = s.split_whitespace().collect();
     let mut stack = Stack {
-        data: vec![0; 10],
+        data: vec![0; 1000],
         top: 0,
-        max: 10
+        max: 1000
     };
 
     for i in 0..sl.len() {
