@@ -38,14 +38,14 @@ pub fn run(s: String) -> i32 {
     };
 
     for i in 0..sl.len() {
-        match parse_i32(&sl[i]) {
+        match parse_i32(sl[i]) {
             Ok(n) => {
                 stack.push(n);
             },
             Err(_) => {
                 let a = stack.pop();
                 let b = stack.pop();
-                stack.push(calc(b, a, &sl[i]));
+                stack.push(calc(b, a, sl[i]));
             },
         }
     }
