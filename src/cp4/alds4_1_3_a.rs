@@ -7,11 +7,11 @@ struct Stack {
 }
 
 impl Stack {
-    fn new() -> Stack {
+    fn new(size: usize) -> Stack {
         Stack {
-            data: vec![0; 1000],
+            data: vec![0; size],
             top: 0,
-            max: 1000
+            max: size
         }
     }
     fn is_empty(&self) -> bool {
@@ -38,7 +38,7 @@ impl Stack {
 
 pub fn run(s: String) -> i32 {
     let sl: Vec<&str> = s.split_whitespace().collect();
-    let mut stack = Stack::new();
+    let mut stack = Stack::new(1000);
 
     for i in 0..sl.len() {
         match parse_i32(sl[i]) {
