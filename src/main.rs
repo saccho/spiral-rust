@@ -7,6 +7,7 @@ use spiral_rust::cp3::alds3_1_2_b;
 use spiral_rust::cp3::alds3_1_2_c;
 use spiral_rust::cp3::alds3_1_2_d;
 use spiral_rust::cp4::alds4_1_3_a;
+use spiral_rust::cp4::alds4_1_3_b;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -86,6 +87,14 @@ fn main() {
             let mut s = String::new();
             std::io::stdin().read_line(&mut s).unwrap();
             println!("{}", alds4_1_3_a::run(s));
+        }
+        "cp4_1_3_b" => {
+            input!{
+                n: usize,
+                q: i32,
+                processes: [(String, i32); n]
+            }
+            println!("{:?}", alds4_1_3_b::run(n, q, processes));
         }
         _ => println!("Unimplemented.")
     }
