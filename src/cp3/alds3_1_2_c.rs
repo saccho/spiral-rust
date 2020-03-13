@@ -1,11 +1,11 @@
 pub struct SortedResult {
     pub values: Vec<String>,
-    pub is_stable: String
+    pub is_stable: String,
 }
 
 pub struct SortedResults {
     pub bubble: SortedResult,
-    pub selection: SortedResult
+    pub selection: SortedResult,
 }
 
 pub fn run(n: usize, c: Vec<String>) -> SortedResults {
@@ -16,17 +16,14 @@ pub fn run(n: usize, c: Vec<String>) -> SortedResults {
 
     let bubble = SortedResult {
         values: bubble_values,
-        is_stable: bubble_is_stable
+        is_stable: bubble_is_stable,
     };
     let selection = SortedResult {
         values: selection_values,
-        is_stable: selection_is_stable
+        is_stable: selection_is_stable,
     };
 
-    SortedResults {
-        bubble,
-        selection
-    }
+    SortedResults { bubble, selection }
 }
 
 fn bubble_sort(n: usize, c: &Vec<String>) -> Vec<String> {
@@ -37,16 +34,16 @@ fn bubble_sort(n: usize, c: &Vec<String>) -> Vec<String> {
 
     while flag {
         flag = false;
-        for j in (i+1..n).rev() {
-            if a_nums[j-1] > a_nums[j] {
+        for j in (i + 1..n).rev() {
+            if a_nums[j - 1] > a_nums[j] {
                 let min_num = a_nums[j];
                 let min_str = a[j].to_string();
 
-                a_nums[j] = a_nums[j-1];
-                a[j] = a[j-1].to_string();
+                a_nums[j] = a_nums[j - 1];
+                a[j] = a[j - 1].to_string();
 
-                a_nums[j-1] = min_num;
-                a[j-1] = min_str;
+                a_nums[j - 1] = min_num;
+                a[j - 1] = min_str;
 
                 flag = true;
             }
@@ -61,7 +58,7 @@ fn selection_sort(n: usize, c: &Vec<String>) -> Vec<String> {
     let mut a = c.clone();
     let mut a_nums = get_num(n, &a);
 
-    for i in 0..n-1 {
+    for i in 0..n - 1 {
         let mut min_i = i;
         for j in i..n {
             if a_nums[j] < a_nums[min_i] {
@@ -71,10 +68,8 @@ fn selection_sort(n: usize, c: &Vec<String>) -> Vec<String> {
         if min_i != i {
             let min_num = a_nums[min_i];
             let min_str = a[min_i].to_string();
-            
             a_nums[min_i] = a_nums[i];
             a[min_i] = a[i].to_string();
-            
             a_nums[i] = min_num;
             a[i] = min_str;
         }

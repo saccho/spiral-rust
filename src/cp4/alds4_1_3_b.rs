@@ -5,7 +5,7 @@ struct Queue {
     data: Processes,
     head: usize,
     tail: usize,
-    max: usize
+    max: usize,
 }
 
 impl Queue {
@@ -14,7 +14,7 @@ impl Queue {
             data: vec![(String::default(), 0); size],
             head: 0,
             tail: 0,
-            max: size
+            max: size,
         }
     }
     fn is_empty(&self) -> bool {
@@ -50,7 +50,7 @@ impl Queue {
 }
 
 pub fn run(n: usize, q: i32, p: Processes) -> Processes {
-    let mut queue = Queue::new(n+1);
+    let mut queue = Queue::new(n + 1);
     let mut results: Processes = Vec::new();
     let mut p_time = 0;
     for i in 0..n {
@@ -59,7 +59,7 @@ pub fn run(n: usize, q: i32, p: Processes) -> Processes {
     while !queue.is_empty() {
         let mut process = queue.dequeue();
         if process.1 <= q {
-            results.push((process.0, p_time+process.1));
+            results.push((process.0, p_time + process.1));
             p_time += process.1;
         } else {
             process.1 -= q;

@@ -10,15 +10,15 @@ fn insert_sort(n: usize, mut a: Vec<i32>) -> Vec<Vec<i32>> {
     let mut results: Vec<Vec<i32>> = Vec::new();
     results.push(a.to_vec());
 
-    for i in 0..n-1 {
+    for i in 0..n - 1 {
         let mut j = i;
         let mut done = false;
-        let v = a[i+1];
+        let v = a[i + 1];
 
         while !done {
-            a[j+1] = a[j];
+            a[j + 1] = a[j];
             if a[j] <= v {
-                a[j+1] = v;
+                a[j + 1] = v;
                 done = true;
             } else if j == 0 {
                 a[0] = v;

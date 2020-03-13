@@ -12,15 +12,14 @@ fn bubble_sort(n: usize, mut a: Vec<i32>) -> (Vec<i32>, i32) {
     let mut flag = true;
     let mut count = 0;
     let mut i = 0;
-    
     while flag {
         flag = false;
-        for j in (i+1..n).rev() {
-            if a[j-1] > a[j] {
-                let mut x = a[j-1].clone();
+        for j in (i + 1..n).rev() {
+            if a[j - 1] > a[j] {
+                let mut x = a[j - 1].clone();
                 let mut y = a[j].clone();
                 mem::swap(&mut x, &mut y);
-                a[j-1] = x;
+                a[j - 1] = x;
                 a[j] = y;
                 flag = true;
                 count += 1;

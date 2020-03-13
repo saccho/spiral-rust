@@ -11,12 +11,12 @@ fn maximum_profit(n: usize, r: Vec<i32>) -> i32 {
     let mut maxv = 1;
     let mut p = maxv - minv;
 
-    for i in 0..n-1 {
+    for i in 0..n - 1 {
         if r[i] < minv {
             minv = r[i];
-            maxv = r[i+1];
-        } else if r[i+1] > maxv {
-            maxv = r[i+1];
+            maxv = r[i + 1];
+        } else if r[i + 1] > maxv {
+            maxv = r[i + 1];
         }
         p = maxv - minv;
     }

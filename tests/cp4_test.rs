@@ -24,14 +24,14 @@ fn cp4_1_3_b_1() {
         ("p2".to_string(), 80),
         ("p3".to_string(), 200),
         ("p4".to_string(), 350),
-        ("p5".to_string(), 20),        
+        ("p5".to_string(), 20),
     ];
     let ans_p = [
         ("p2".to_string(), 180),
         ("p5".to_string(), 400),
         ("p1".to_string(), 450),
         ("p3".to_string(), 550),
-        ("p4".to_string(), 800),        
+        ("p4".to_string(), 800),
     ];
     assert_eq!(ans_p.to_vec(), alds4_1_3_b::run(N, Q, p.to_vec()));
 }

@@ -1,5 +1,3 @@
-use std::env;
-use spiral_rust::input;
 use spiral_rust::cp2::alds2_1_1_d;
 use spiral_rust::cp3::alds3_1_1_a;
 use spiral_rust::cp3::alds3_1_2_a;
@@ -8,6 +6,8 @@ use spiral_rust::cp3::alds3_1_2_c;
 use spiral_rust::cp3::alds3_1_2_d;
 use spiral_rust::cp4::alds4_1_3_a;
 use spiral_rust::cp4::alds4_1_3_b;
+use spiral_rust::input;
+use std::env;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -18,14 +18,14 @@ fn main() {
 
     match &*q {
         "cp2_1_1_d" => {
-            input!{
+            input! {
                 n: usize,
                 r: [i32; n]
             }
             println!("{}", alds2_1_1_d::run(n, r));
         }
         "cp3_1_1_a" => {
-            input!{
+            input! {
                 n: usize,
                 a: [i32; n]
             }
@@ -35,7 +35,7 @@ fn main() {
             }
         }
         "cp3_1_2_a" => {
-            input!{
+            input! {
                 n: usize,
                 a: [i32; n]
             }
@@ -44,7 +44,7 @@ fn main() {
             println!("{}", count);
         }
         "cp3_1_2_b" => {
-            input!{
+            input! {
                 n: usize,
                 a: [i32; n]
             }
@@ -53,7 +53,7 @@ fn main() {
             println!("{}", count);
         }
         "cp3_1_2_c" => {
-            input!{
+            input! {
                 n: usize,
                 c: [String; n]
             }
@@ -64,7 +64,7 @@ fn main() {
             println!("{}", results.selection.is_stable);
         }
         "cp3_1_2_d" => {
-            input!{
+            input! {
                 n: usize,
                 a: [i32; n]
             }
@@ -72,7 +72,7 @@ fn main() {
             println!("{:?}", result.m);
             for i in 0..result.m {
                 print!("{}", result.intervals[i]);
-                if i == result.m-1 {
+                if i == result.m - 1 {
                     print!("\n");
                 } else {
                     print!(" ");
@@ -89,13 +89,13 @@ fn main() {
             println!("{}", alds4_1_3_a::run(s));
         }
         "cp4_1_3_b" => {
-            input!{
+            input! {
                 n: usize,
                 q: i32,
                 processes: [(String, i32); n]
             }
             println!("{:?}", alds4_1_3_b::run(n, q, processes));
         }
-        _ => println!("Unimplemented.")
+        _ => println!("Unimplemented."),
     }
 }

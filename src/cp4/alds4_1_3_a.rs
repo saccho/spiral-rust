@@ -3,7 +3,7 @@ use std::num::ParseIntError;
 struct Stack {
     data: Vec<i32>,
     top: usize,
-    max: usize
+    max: usize,
 }
 
 impl Stack {
@@ -11,7 +11,7 @@ impl Stack {
         Stack {
             data: vec![0; size],
             top: 0,
-            max: size
+            max: size,
         }
     }
     fn is_empty(&self) -> bool {
@@ -32,7 +32,7 @@ impl Stack {
             panic!("stack underflow")
         }
         self.top -= 1;
-        self.data[self.top+1]
+        self.data[self.top + 1]
     }
 }
 
@@ -44,12 +44,12 @@ pub fn run(s: String) -> i32 {
         match parse_i32(sl[i]) {
             Ok(n) => {
                 stack.push(n);
-            },
+            }
             Err(_) => {
                 let a = stack.pop();
                 let b = stack.pop();
                 stack.push(calc(b, a, sl[i]));
-            },
+            }
         }
     }
 
@@ -61,7 +61,7 @@ fn calc(a: i32, b: i32, operator: &str) -> i32 {
         "+" => a + b,
         "-" => a - b,
         "*" => a * b,
-        _ => panic!("The operator must be `+`, `-`, or `*`.")
+        _ => panic!("The operator must be `+`, `-`, or `*`."),
     }
 }
 

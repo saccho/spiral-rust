@@ -9,7 +9,7 @@ pub fn run(n: usize, a: Vec<i32>) -> (Vec<i32>, i32) {
 fn selection_sort(n: usize, mut a: Vec<i32>) -> (Vec<i32>, i32) {
     let mut count = 0;
 
-    for i in 0..n-1 {
+    for i in 0..n - 1 {
         let mut min_i = i;
         for j in i..n {
             if a[j] < a[min_i] {

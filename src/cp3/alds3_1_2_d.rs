@@ -2,7 +2,7 @@ pub struct SortedResult {
     pub m: usize,
     pub intervals: Vec<usize>,
     pub cnt: i32,
-    pub values: Vec<i32>
+    pub values: Vec<i32>,
 }
 
 pub fn run(n: usize, a: Vec<i32>) -> SortedResult {
@@ -11,7 +11,7 @@ pub fn run(n: usize, a: Vec<i32>) -> SortedResult {
         m,
         intervals,
         cnt,
-        values: shell_values
+        values: shell_values,
     }
 }
 
@@ -39,16 +39,16 @@ fn shell_sort(n: usize, a: &Vec<i32>) -> (Vec<i32>, usize, Vec<usize>, i32) {
 fn insert_sort(n: usize, a: &Vec<i32>, g: usize, cnt: &mut i32) -> Vec<i32> {
     let mut result = a.clone();
 
-    for i in 0..n-g {
+    for i in 0..n - g {
         let mut j = i;
         let mut done = false;
-        let v = result[i+g];
+        let v = result[i + g];
 
         while !done {
-            result[j+g] = result[j];
+            result[j + g] = result[j];
             *cnt += 1;
             if result[j] <= v {
-                result[j+g] = v;
+                result[j + g] = v;
                 *cnt -= 1;
                 done = true;
             } else if j < g {
